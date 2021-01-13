@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CSIA Newspaper &mdash; Sky Blue Times</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {% load static %}
+  {% load hitcount_tags %}
+  <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+  <link href="{% static 'css/jquery.mb.YTPlayer.min.css' %}" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href='{% static "css/github.css" %}' rel="stylesheet">
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    
+    <div class="header-top">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-6 d-flex">
+            <a href="{% url 'index' %}" class="site-logo">
+              Sky Blue Times
+            </a>
+
+            <a href="#" class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                class="icon-menu h3"></span></a>
+
+          </div>
+          <div class="col-12 col-lg-6 ml-auto d-flex">
+            <div class="ml-md-auto top-social d-none d-lg-inline-block">
+              <a href="#" class="d-inline-block p-3"><span class="icon-facebook"></span></a>
+                <a href="#" class="d-inline-block p-3"><span class="icon-twitter"></span></a>
+                <a href="#" class="d-inline-block p-3"><span class="icon-instagram"></span></a>
+            </div>
+            <form action="{% url 'search' %}" class="search-form d-inline-block">
+
+              <div class="d-flex">
+                <input name="q" type="text" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-secondary" ><span class="icon-search"></span></button>
+              </div>
+            </form>
+
+            
+          </div>
+          <div class="col-6 d-block d-lg-none text-right">
+            
+          </div>
+        </div>
+      </div>
+      
+      {% if messages %}
+      <ul class="messages" style="list-style:none;background-color: cornsilk; font-size: 30px; margin: 0 auto; text-align: center;">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+
+      
+      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mr-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
+                <li class="active">
+                  <a href="{% url 'index' %}" class="nav-link text-left">Home</a>
+                </li>
+                <li>
+                  <a href="{% url 'science' %}" class="nav-link text-left">Science</a>
+                </li>
+                <li>
+                  <a href="{% url 'politic' %}" class="nav-link text-left">Politics</a>
+                </li>
+                <li>
+                  <a href="{% url 'business' %}" class="nav-link text-left">Business</a>
+                </li>
+                <li>
+                    <a href="{% url 'economy' %}" class="nav-link text-left">Economy</a>
+                </li>
+                <li><a href="{% url 'art' %}" class="nav-link text-left">Art</a></li>
+                <li>
+                  <a href="{% url 'csialife' %}" class="nav-link text-left">CSIA Life</a>
+                </li>
+                <li>
+                  <a href="{% url 'allposts' %}" class="nav-link text-left">All Posts</a>
+                </li>
+                <li><a href="{% url 'aboutus' %}" class="nav-link text-left">About Us</a></li>
+
+              </ul>                                                                                                                                                                                                                                                                                         
+            </nav>
+
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    
+    </div>
+
+    
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="section-title">
+              <span class="caption d-block small">Categories</span>
+              <h2>Economy</h2>
+            </div>
+            {% for post in post_economy_latest %}
+            <div class="post-entry-2 d-flex">
+              <div class="thumbnail order-md-2" style="background-image: url({{post.image_thumbnail_1.url}})"></div>
+              <div class="contents order-md-1 pl-0">
+                <h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
+                <p class="mb-3">
+                  {% if post.is_content_more125 %}
+                    {{ post.get_content_under125 }}
+                  {% else %}
+                    {{ post.content }}
+                  {% endif %}
+                </p>
+                <div class="post-meta">
+                  <span class="d-block"><a href="#">{{post.author}}</a> in <a href="#">Economy</a></span>
+                  <span class="date-read">{{post.createDate | date:'M d'}}<span class="mx-1">&bullet;</span>{% get_hit_count for post %} view(s)<span class="icon-star2"></span></span>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+            
+          </div>
+          <div class="col-lg-3">
+            <div class="section-title">
+              <h2>Another Posts</h2>
+            </div>
+            {% for post in post_random %}
+            <div class="trend-entry d-flex">
+              <div class="number align-self-start">0{{forloop.counter}}</div>
+              <div class="trend-contents">
+                <h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
+                <div class="post-meta">
+                  <span class="d-block"><a href="#">{{post.author}}</a> in 
+                    <a href="#">
+                      {% for c in post.category.all %}
+                      {{c}}
+                      {% if not forloop.last %}
+                        ,
+                      {% endif %}
+                      {% endfor %}
+                    </a>
+                  </span>
+                  <span class="date-read">{{post.createDate | date:'M d'}} <span class="mx-1">&bullet;</span> {% get_hit_count for post %} view(s) <span class="icon-star2"></span></span>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+
+            
+            
+            <p>
+              <a href="{% url 'allposts' %}" class="more">See All Posts <span class="icon-keyboard_arrow_right"></span></a>
+            </p>
+          </div>
+        </div>
+
+        <!-- <div class="row">
+          <div class="col-lg-6">
+            <ul class="custom-pagination list-unstyled">
+              <li><a href="#">1</a></li>
+              <li class="active">2</li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="site-section subscribe bg-light">
+      <div class="container">
+        <form action="#" class="row align-items-center">
+          <div class="col-md-5 mr-auto">
+            <h2>Sky Blue Times</h2>
+            <p>Cheongshim International Academy, CSIA <br />
+               CSIA NEWSPAPER <br />
+               Since 2020 December
+            </p>
+          </div>
+        </form>
+        <form action="{% url 'email-list-signup' %}" method="POST"class="row align-items-center">
+        {% csrf_token %}
+          <div class="col-md-6 ml-auto">
+            <div class="d-flex">
+              {{form}}
+              <button type="submit" class="btn btn-secondary" ><span class="icon-paper-plane"></span></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div> 
+
+
+    
+    <div class="footer">
+      <div class="container">
+        
+
+        <div class="row">
+          <div class="col-12">
+            <div class="copyright">
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a> -->
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+  <!-- .site-wrap -->
+
+
+  <!-- loader -->
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
+
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery-ui.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static 'js/jquery.sticky.js' %}"></script>
+  <script src="{% static 'js/jquery.mb.YTPlayer.min.js' %}"></script>
+
+  <script src="{% static 'js/highlight.pack.js' %}"></script>
+
+
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

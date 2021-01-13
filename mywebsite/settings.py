@@ -194,8 +194,8 @@ TINYMCE_DEFAULT_CONFIG = {
     }
 if DEBUG == False:
     CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': 'hxhl3kyqi',
-        'API_KEY': '824456298834862',
-        'API_SECRET': 'MMkzPjxXbqc3JQJnMjc_745OF8g',
+        'CLOUD_NAME': 'hmgk0wib3',
+        'API_KEY': '651787169211681',
+        'API_SECRET': '3pRTs0qvqXibgZ-v3aLtJ3ddQjk',
     }
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

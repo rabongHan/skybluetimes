@@ -30,36 +30,36 @@ ALLOWED_HOSTS = ['.herokuapp.com', '.researchthroughdesign.org', '127.0.0.1']
 
 
 # Application definition
-if DEBUG:
-    INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-        'blog.apps.BlogConfig',
-        'hitcount',
-        'marketing.apps.MarketingConfig',
-        'tinymce',
-        'imagekit',
-    ]   
-else:
-    INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-        'blog.apps.BlogConfig',
-        'hitcount',
-        'marketing.apps.MarketingConfig',
-        'tinymce',
-        'imagekit',
-        'cloudinary_storage',
-        'cloudinary',
-    ]   
+# if DEBUG:
+#     INSTALLED_APPS = [
+#         'django.contrib.admin',
+#         'django.contrib.auth',
+#         'django.contrib.contenttypes',
+#         'django.contrib.sessions',
+#         'django.contrib.messages',
+#         'django.contrib.staticfiles',
+#         'blog.apps.BlogConfig',
+#         'hitcount',
+#         'marketing.apps.MarketingConfig',
+#         'tinymce',
+#         'imagekit',
+#     ]   
+# else:
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog.apps.BlogConfig',
+    'hitcount',
+    'marketing.apps.MarketingConfig',
+    'tinymce',
+    'imagekit',
+    'cloudinary_storage',
+    'cloudinary',
+]   
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -192,10 +192,10 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
     }
-if DEBUG == False:
-    CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': 'hmgk0wib3',
-        'API_KEY': '651787169211681',
-        'API_SECRET': '3pRTs0qvqXibgZ-v3aLtJ3ddQjk',
-    }
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# if DEBUG == False:
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hmgk0wib3',
+    'API_KEY': '651787169211681',
+    'API_SECRET': '3pRTs0qvqXibgZ-v3aLtJ3ddQjk',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

@@ -147,7 +147,7 @@
             </div>
             {% for result in queryset %}
             <div class="post-entry-2 d-flex">
-              <div class="thumbnail order-md-2" style="background-image: url({{post.image_thumbnail_1.url}})"></div>
+              <div class="thumbnail order-md-2" style="background-image: url({{result.image_thumbnail_1.url}})"></div>
               <div class="contents order-md-1 pl-0">
                 <h2><a href="{{ result.get_absolute_url }}">{{result.title}}</a></h2>
                 <p class="mb-3">

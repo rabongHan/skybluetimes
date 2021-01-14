@@ -30,36 +30,36 @@ ALLOWED_HOSTS = ['.herokuapp.com', '.researchthroughdesign.org', '127.0.0.1']
 
 
 # Application definition
-# if DEBUG:
-#     INSTALLED_APPS = [
-#         'django.contrib.admin',
-#         'django.contrib.auth',
-#         'django.contrib.contenttypes',
-#         'django.contrib.sessions',
-#         'django.contrib.messages',
-#         'django.contrib.staticfiles',
-#         'blog.apps.BlogConfig',
-#         'hitcount',
-#         'marketing.apps.MarketingConfig',
-#         'tinymce',
-#         'imagekit',
-#     ]   
-# else:
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
-    'hitcount',
-    'marketing.apps.MarketingConfig',
-    'tinymce',
-    'imagekit',
-    'cloudinary_storage',
-    'cloudinary',
-]   
+if DEBUG:
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'blog.apps.BlogConfig',
+        'hitcount',
+        'marketing.apps.MarketingConfig',
+        'tinymce',
+        'imagekit',
+    ]   
+else:
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'blog.apps.BlogConfig',
+        'hitcount',
+        'marketing.apps.MarketingConfig',
+        'tinymce',
+        'imagekit',
+        'cloudinary_storage',
+        'cloudinary',
+    ]   
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -150,18 +150,6 @@ STATICFILES_DIRS = [
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-# email
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.googlemail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'csiaskybluetimes@gmail.com'
-EMAIL_HOST_PASSWORD = 'jaewonhansin61'
-
-#mailchimp
-MAILCHIMP_API_KEY='7fb58c6deb33b48d78b46c4f18b36562-us7'
-MAILCHIMP_DATA_CENTER='us7'
-MAILCHIMP_EMAIL_LIST_ID = '0d7f973d0e'
 
 #Tinymce
 TINYMCE_DEFAULT_CONFIG = {
@@ -192,10 +180,15 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
     }
-# if DEBUG == False:
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hmgk0wib3',
-    'API_KEY': '651787169211681',
-    'API_SECRET': '3pRTs0qvqXibgZ-v3aLtJ3ddQjk',
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+if DEBUG != True:
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': 'hmgk0wib3',
+        'API_KEY': '651787169211681',
+        'API_SECRET': '3pRTs0qvqXibgZ-v3aLtJ3ddQjk',
+    }
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+#mailchimp
+MAILCHIMP_API_KEY='7fb58c6deb33b48d78b46c4f18b36562-us7'
+MAILCHIMP_DATA_CENTER='us7'
+MAILCHIMP_EMAIL_LIST_ID = '0d7f973d0e'

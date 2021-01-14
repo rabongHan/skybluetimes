@@ -17,7 +17,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     title_image = models.ImageField(blank=True)
     # content = models.TextField()
-    createDate = models.DateTimeField(auto_now_add=True)
+    createDate = models.DateTimeField(blank=True)
     updateDate = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField(Category, help_text="카테고리를 설정하세요")
     author = models.CharField(max_length=30, null=True,default='none')
